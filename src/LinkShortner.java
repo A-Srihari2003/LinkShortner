@@ -17,9 +17,7 @@
 	        String shortURL = generateShortURL(longURL);
 	        
 	        if (shortToLongMap.containsKey(shortURL)) {
-	            // Handle collision by generating a different short URL or other strategies
-	            // This is a simplified example; you might want to implement a more robust solution
-	            // such as appending a counter to the short URL.
+	            
 	            return shortenURL(longURL + System.currentTimeMillis());
 	        }
 
@@ -38,7 +36,7 @@
 	            MessageDigest md = MessageDigest.getInstance("SHA-256");
 	            byte[] hashBytes = md.digest(longURL.getBytes());
 
-	            // Convert hashBytes to a short string (for simplicity, using the first 8 characters)
+	            
 	            StringBuilder shortURL = new StringBuilder();
 	            for (int i = 0; i < Math.min(8, hashBytes.length); i++) {
 	                shortURL.append(Integer.toString((hashBytes[i] & 0xff) + 0x100, 16).substring(1));
